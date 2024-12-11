@@ -1,0 +1,61 @@
+/* Fontawesome */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    display: flex;
+    height: 85vh;
+    align-items: stretch;
+}
+
+.left-section {
+    background: url('https://img.freepik.com/premium-vector/man-freelancer-sits-table-cafe-working-laptop-remote-worker-drinking-beverage-coworking-space-workplace-cafeteria-restaurant_575670-1291.jpg?size=626&ext=jpg&ga=GA1.1.1546980028.1702771200&semt=ais') no-repeat center center;
+    display: none;
+}
+
+.right-section {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgb(10 75 90);
+    width: 100%;
+    max-width: 450px;
+}
+
+
+
+
+
+
+/*Responsive*/
+@media screen and (min-width: 768px) {
+    .left-section {
+        display: block;
+        /* Show the left section on larger screens */
+        flex: 1;
+    }
+}
+a {
+    text-decoration: none;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+mat-hint{
+    color: red;
+}

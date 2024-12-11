@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-sm-6">
+                <form #productForm="ngForm">
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput [(ngModel)]="product.productName" name="productName">
+                        
+                    </mat-form-field>
+        
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Product Description</mat-label>
+                        <input matInput [(ngModel)]="product.productDescription" name="productDescription">
+                       
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Product Actual Price</mat-label>
+                        <input matInput [(ngModel)]="product.productActualPrice" name="productActualPrice">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Discounted Price</mat-label>
+                        <input matInput [(ngModel)]="product.productDiscountedPrice" name="productDiscountedPrice">
+                    </mat-form-field>
+                </form>
+                <div align="end">
+                    <button mat-stroked-button color="primary" type="reset">
+                        <mat-icon>refresh</mat-icon> Clear
+                    </button>
+                    <button mat-stroked-button color="primary" class="mx-2" (click)="addProduct(productForm)" [disabled]="productForm.invalid" *ngIf="isNewProduct">
+                        <mat-icon>add</mat-icon>Add
+                    </button>
+
+                    <button mat-stroked-button color="primary" class="mx-2" (click)="addProduct(productForm)" [disabled]="productForm.invalid" *ngIf="!isNewProduct">
+                        <mat-icon>add</mat-icon> Update
+                    </button>
+                    
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div>
+                    <div class="dropzone" appDrag (files)="fileDropped($event)">
+                        <div class="text-wrapper">
+                            <div class="centered">Drag and drop your file or <a (click)="selectFile.click()" class="browse-button">browse</a> a file</div>
+                        </div>
+                    </div>
+
+                    <input #selectFile type="file" multiple value="Select" (change)="onFileSelected($event)" style="display: none;">
+                </div>
+                <div class="mt-5">
+                    <div class="row">
+                        <mat-grid-list cols="4" rowHeight="1:1">
+                            <mat-grid-tile *ngFor="let file of product.productImages; let i= index;">
+                                <div class="post-relative">
+                                    <span class="btn-remove-image" (click)="removeImages(i)">X</span>
+                                    <img [src]="file.url" width="100px" height="100px">
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

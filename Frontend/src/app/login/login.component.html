@@ -1,0 +1,33 @@
+<!-- login.component.html -->
+<div class="container">
+    <div class="left-section"></div>
+    <div class="right-section">
+        <div class="login-container">
+            <form [formGroup]="loginForm">
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="userName" required>
+                    <mat-icon matSuffix>person</mat-icon>
+                    <mat-error *ngIf="loginForm.controls.userName.touched && loginForm.controls.userName.invalid">
+                        <span *ngIf="loginForm.controls.userName.errors.required">This field is mandatory</span>
+                        <span *ngIf="loginForm.controls.userName.errors.pattern">This field is invalid</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" type="password" required [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" [attr.aria-pressed]="hide">
+                        <mat-icon> {{ hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+                        <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory</span>
+                    </mat-error>
+                  </mat-form-field>
+               <a routerLink="/register">Create Account</a>
+                <button mat-raised-button color="primary" color="primary" (click)="onSubmit()" [disabled]="loginForm.invalid" class="float-end">
+                    <mat-icon>login</mat-icon> Login
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,328 @@
+<section class="content">
+    <div class="content-block">
+      <div class="block-header">
+        <!-- breadcrumb -->
+       
+      </div>
+      <div class="row clearfix">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+          <div class="card">
+            <div class="header">
+              <h2>Add Member</h2>
+            </div>
+            <div class="body">
+              <div id="section1" [style.display]="currentSection === 1 ? 'block' : 'none'">
+                <form [formGroup]="testForm" (ngSubmit)="onSubmit()" class="m-4">
+                  <div class="row">
+                    
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>First name</mat-label>
+                        <input formControlName="firstName" matInput />
+                        <mat-error *ngIf="testForm.get('firstName')?.hasError('required')">
+                          First name is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+            
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Last name</mat-label>
+                        <input formControlName="lastName" matInput />
+                        <mat-error *ngIf="testForm.get('lastName')?.hasError('required')">
+                          Last name is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                   
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Gender</mat-label>
+                        <mat-select formControlName="gend" required>
+                          <mat-option value="Male">Male</mat-option>
+                          <mat-option value="Female">Female</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('gend')?.hasError('required')">
+                          Gender is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+  
+                    <!-- <div class="col-xl-3 col-lg-2 col-md-4 col-sm-6 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Country Code</mat-label>
+                        <mat-select formControlName="countryCode">
+                          <mat-option *ngFor="let code of countryCodes" [value]="code.code">
+                            {{ code.name }} ({{ code.code }})
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div> -->
+                    <div class="col-xl-4 col-lg-4 col-md-8 col-sm-6 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Phone Number</mat-label>
+                        <input matInput formControlName="phoneNo" placeholder="e.g. 7012345678" />
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-hint>Example: 7012345678</mat-hint>
+                        <mat-error *ngIf="testForm.get('phoneNo')?.hasError('required')">
+                          Phone number is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Date of Birth</mat-label>
+                        <!-- <input formControlName="dateOfBirth" matInput (click)="getByPhoneNumber()" /> -->
+                        <input matInput [matDatepicker]="datepick" formControlName="dateOfBirth" required>
+                        <mat-datepicker-toggle matSuffix [for]="datepick"></mat-datepicker-toggle>
+                        <mat-datepicker #datepick></mat-datepicker>
+                        <mat-error *ngIf="testForm.get('dateOfBirth')?.hasError('required')">
+                          Date of Birth is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Current Location</mat-label>
+                        <mat-select formControlName="currentLocation"required>
+                          <mat-option>Thika</mat-option>
+                          <mat-option>Ruiru</mat-option>
+                          <mat-option>Tatu City</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('currentLocation')?.hasError('required')">
+                          Current Location is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                    <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Enter Email</mat-label>
+                        <input matInput formControlName="email"/>
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="testForm.get('email')?.hasError('required')">
+                          email is required
+                        </mat-error>
+                        <mat-error *ngIf="testForm.get('email')?.hasError('email')">
+                          email is invalid
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Baptismal Status</mat-label>
+                        <mat-select formControlName="isBaptised" required>
+                          <mat-option value="true">Baptised</mat-option>
+                          <mat-option value="false">Not Baptised</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div> -->
+  
+                    <div class="text-center">
+                      <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                          <button class="btn-space" mat-raised-button color="primary" type="button" (click)="nextSection()">
+                            Next
+                          </button>
+                          <!-- <button type="button" mat-button (click)="onCancel()">
+                            Cancel
+                          </button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            
+              <!-- Section 2 and Section 3 fields with similar error messages -->
+              <div id="section2" [style.display]="currentSection === 2 ? 'block' : 'none'">
+                <form [formGroup]="testForm" (ngSubmit)="onSubmit()" class="m-4">
+                  <div class="row">
+  
+  
+  
+                    <!-- <div class="col-xl-3 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Select Church</mat-label>
+                        <mat-select formControlName="outStation" required>
+                          <mat-option>St Joseph</mat-option>
+                          <mat-option>St Mathew</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('outStation')?.hasError('required')">
+                          Church is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                    
+                    <!-- <div class="col-xl-3 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Select Community</mat-label>
+                        <mat-select formControlName="community" required>
+                          <mat-option>Elders</mat-option>
+                          <mat-option>Juniors</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('community')?.hasError('required')">
+                          Community is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                  <!-- <div class="col-xl-3 col-lg col-md-12 col-sm-12 mb-3">
+                    <mat-form-field class="example-full-width mb-3" appearance="outline">
+                      <mat-label>Select Common Group</mat-label>
+                      <mat-select formControlName="commonGroup" required >
+                        <mat-option>4th Years</mat-option>
+                        <mat-option>3rd Years</mat-option>
+                        <mat-option>2nd Years</mat-option>
+                        <mat-option>1st Years</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="testForm.get('commonGroup')?.hasError('required')">
+                        group is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+   -->
+                  <!-- <div class="col-xl-3 col-lg col-md-12 col-sm-12 mb-3">
+                    <mat-form-field class="example-full-width mb-3" appearance="outline">
+                      <mat-label>Select Other Group</mat-label>
+                      <mat-select formControlName="otherGroup" multiple required >
+                        <mat-option>Christian Union</mat-option>
+                        <mat-option>Sabbath Day Adventist</mat-option>
+                        <mat-option>Youth Catholic Service Union</mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="testForm.get('otherGroup')?.hasError('required')">
+                        group is required
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+   -->
+                    <div class="text-center">
+                      <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                          <button class="btn-space" mat-raised-button color="primary" type="button" (click)="previousSection()">
+                            Previous
+                          </button>
+                          <button class="btn-space" mat-raised-button color="primary" type="button" (click)="nextSection()">
+                            Next
+                          </button>
+                          <!-- <button type="button" mat-button (click)="onCancel()">
+                            Cancel
+                          </button> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            
+              <div id="section3" [style.display]="currentSection === 3 ? 'block' : 'none'">
+                <form [formGroup]="testForm" (ngSubmit)="onSubmit()" class="m-4">
+                  <div class="row">
+                    <!-- <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Select Family</mat-label>
+                        <mat-select formControlName="family">
+                          <mat-option>Jundah Family</mat-option>
+                          <mat-option>Soldiers of Christ</mat-option>
+                          <mat-option>Issachars Family</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('family')?.hasError('required')">
+                          Family is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                    
+                    <!-- <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Family Role</mat-label>
+                        <mat-select formControlName="familyRole" required>
+                          <mat-option value="PARENT">Parent</mat-option>
+                          <mat-option value="DEPENDANT">Dependent</mat-option>
+                          <mat-option value="SELF">Self</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('familyRole')?.hasError('required')">
+                          Family Role is required
+                        </mat-error>
+                      </mat-form-field>
+                    </div> -->
+                
+                    <!-- <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Assign Role</mat-label>
+                        <mat-select formControlName="role" required multiple>
+                          <mat-option>It Support</mat-option>
+                          <mat-option>Frontend Developer web</mat-option>
+                          <mat-option>Frontend developer Mobile</mat-option>
+                          <mat-option>Backend developer</mat-option>
+                          <mat-option>Data Analysis</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="testForm.get('roleFk')?.hasError('required')">
+                          Role is required
+                        </mat-error>
+                      </mat-form-field>
+                      
+                    </div> -->
+                
+                    <!-- <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Select Profession</mat-label>
+                        <mat-select formControlName="profession" multiple required>
+                          <mat-option>Computer Science</mat-option>
+                          <mat-option>Information Technology</mat-option>
+                          <mat-option>Infomation Communication Technology</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>                     -->
+                    <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3">
+                      <mat-label>Do you have Disability?</mat-label>
+                      <mat-radio-group formControlName="disability" required>
+                        <mat-radio-button value="yes">Yes</mat-radio-button>
+                        <mat-radio-button value="no">No</mat-radio-button>
+                      </mat-radio-group>
+                      <mat-error *ngIf="testForm.get('disability')?.hasError('required')">
+                        Please select an option
+                      </mat-error>
+                    </div>
+                
+                    <div class="col-xl-4 col-lg col-md-12 col-sm-12 mb-3" *ngIf="testForm.get('disability')?.value === 'yes'">
+                      <mat-form-field class="example-full-width mb-3" appearance="outline">
+                        <mat-label>Select Disability</mat-label>
+                        <mat-select formControlName="disabilityType">
+                          <mat-option value="physically handicapped">Physically Handicapped</mat-option>
+                          <mat-option value="speech impaired">Speech Impaired</mat-option>
+                          <mat-option value="intellectual disability">Intellectual Disability</mat-option>
+                          <mat-option value="autism spectrum disorder">Autism Spectrum Disorder</mat-option>
+                          <mat-option value="cerebral palsy">Cerebral Palsy</mat-option>
+                          <mat-option value="wheelchair user">Wheelchair User</mat-option>
+                          <mat-option value="amputee">Amputee</mat-option>
+                          <mat-option value="multiple disabilities">Multiple Disabilities</mat-option>
+                          <mat-option value="psychiatric disability">Psychiatric Disability</mat-option>
+                          <mat-option value="visual impairment">Visual Impairment</mat-option>
+                          <mat-option value="hearing impairment">Hearing Impairment</mat-option>
+                          <mat-option value="developmental delay">Developmental Delay</mat-option>
+                        </mat-select>
+                    
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <div class="row">
+                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                        <button class="btn-space" mat-raised-button color="primary" type="button" (click)="previousSection()">
+                          Previous
+                        </button>
+                        <button class="btn-space" mat-raised-button color="primary" type="submit">
+                          Submit
+                        </button>
+                        <!-- <button type="button" mat-button (click)="onCancel()">
+                          Cancel
+                        </button> -->
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
